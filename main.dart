@@ -4,19 +4,29 @@ import 'dart:io';
 //   "id_disciplina": {"nome_disciplina"}
 // };
 
-Map<String, dynamic> disciplinas = {
-  "1": {"teste"},
-  "2": {"teste"},
-  "3": {"teste"},
-  "4": {"teste"}
+Map<String, String> disciplinas = {
+  "UC1": "Analisar requisitos e funcionalidades da aplicação",
+  "UC2": "Auxiliar na gestão de projetos de Tecnologia da Informação",
+  "UC3": "Desenvolver algoritmos",
+  "UC4": "Analisar programação estruturada e orientada a objetos",
+  "UC5": "Desenvolver aplicações desktop",
+  "UC6": "Criar e manter Banco de Dados",
+  "UC7": "Desenvolver aplicações web",
+  "UC8": "Desenvolver aplicações mobile",
+  "UC9":
+      "Realizar operações de atualização e manutenção em aplicações desenvolvidas",
+  "UC10": "Realizar testes nas aplicações desenvolvidas",
+  "UC11": "Realizar operações de suporte junto ao usuário",
+  "UC12": "Projeto Integrador - Desenvolvedor de Aplicações",
 };
 
-// Map<String, dynamic> infoDisciplina = {
-//   "id_info": {
+// Map<int, dynamic> infoDisciplina = {
+//   0: {
 //   "id_disciplina": id_disciplina,
 //   "data": data,
 //   "hora": hora,
-//   "duracao": duracao,              // sem acento
+//   "duracao": duracao,
+//   "contador" : 0,
 //   "aula_disciplina": aula_disciplina}
 // };
 
@@ -37,26 +47,6 @@ Map<String, dynamic> disciplinas = {
 
 Map<String, dynamic> historico = {};
 
-int menu_disciplinas(disciplinas) {
-  disciplinas.forEach((id_disciplina, nome_disciplina) => stdout.write("ID: $id_disciplina Nome: $nome_disciplina\n"));
-  stdout.write("Digite o id da disciplina: ");
+void adicionarHistorico(historico) {}
 
-  String? inputO = stdin.readLineSync();
-  int? opcao = (inputO != null && inputO.isNotEmpty) ? int.tryParse(inputO) : null;
-  print("=" * 70);
-  if (opcao != null && !opcao.isNaN) {
-    return opcao;
-  } else {
-    return 9999;
-  }
-}
-
-void adicionarHistorico(historico) {
-  
-}
-
-
-void main () {
-  menu_disciplinas(disciplinas);
-
-}
+void main() {}
