@@ -49,40 +49,46 @@ int menu_disciplinas(disciplinas) {
 //  }
 // };
 
-Map<String, dynamic> historico = {"1": {2: 3}, "2": {3: 4}};
+void mostrarHistorico(File file) {
+  final conteudo = file.readAsStringSync();
+  final mapaDecodificado = json.decode(conteudo);
 
-void adicionarHistorico(historico) {
-  dynamic ultimoID = historico.keys.last;
-  dynamic ultimoIdAluno = historico.values.last['id_aluno'];
-
-  ultimoID = int.tryParse(ultimoID)! + 1;
-  ultimoIdAluno = int.tryParse(ultimoIdAluno)! + 1;
-  print(ultimoID + 1);
-  stdout.write('Aluno: ');
-  String? inpNomeAluno = stdin.readLineSync();
-  String? nomeA = (inpNomeAluno != null && inpNomeAluno.isNotEmpty) ?
-  inpNomeAluno.toLowerCase() : null; 
-  
-  if (nomeA != null) {
-      if (!historico.containsValue(nomeA)) {
-        historico["${(int.parse(ultimoID)+1).toString()}"] = {"id_aluno": (int.parse(ultimoIdAluno)+1).toString(), "Nome aluno": nomeA};
+  final List<dynamic> historico = mapaDecodificado['historico'];
+  try {
+    historico.forEach((registro) {
+      if (registro is Map) {
+        registro.forEach((chave, valor) {
+          print('$chave : $valor');
+        });
+      } else {
+        print(registro);
       }
-  } else {
-      print("\nVerifique se possui algum campo preenchido de forma incorreta!");
+      print("\n");
+    });
+    // List<dynamic> listaDeItens = entry.value;
+  } catch (e) {
+  print('Ocorreu um erro ao decodificar: $e');
   }
-  historico.forEach((chave, valor) => stdout.write("Id info: $chave\nId aluno: $valor['id_aluno']\nNome Aluno: $valor['nome_aluno']\n"));
-
-  
 }
+
 
 Future<void> inicializarArquivo() async {
   final file = File("armazenamento.json");
   if (!await file.exists()) {
     await file.writeAsString(jsonEncode([]));
+  } else {
+    return;
   }
+}
+
+void relatorioHistorico() async {
+
+
 }
 
 // Future<list<Map, String>>> dados = {}
 void main () {
+  final file = File("armazenamento.json");
   inicializarArquivo();
+  mostrarHistorico(file);
 }
