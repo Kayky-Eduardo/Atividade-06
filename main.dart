@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'dart:convert';
 // Map<String, dynamic> disciplinas = {
 //   "id_disciplina": {"nome_disciplina"}
 // };
@@ -51,7 +51,6 @@ int menu_disciplinas(disciplinas) {
 
 Map<String, dynamic> historico = {"1": {2: 3}, "2": {3: 4}};
 
-
 void adicionarHistorico(historico) {
   dynamic ultimoID = historico.keys.last;
   dynamic ultimoIdAluno = historico.values.last['id_aluno'];
@@ -76,7 +75,14 @@ void adicionarHistorico(historico) {
   
 }
 
+Future<void> inicializarArquivo() async {
+  final file = File("armazenamento.json");
+  if (!await file.exists()) {
+    await file.writeAsString(jsonEncode([]));
+  }
+}
 
+// Future<list<Map, String>>> dados = {}
 void main () {
-  adicionarHistorico(historico);
+  inicializarArquivo();
 }
