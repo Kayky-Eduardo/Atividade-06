@@ -1,1 +1,47 @@
-[]
+{
+  "disciplinas": [
+    {
+      "id_disciplina": 1,
+      "nome_disciplina": "Matemática"
+    }
+  ],
+  "info_disciplinas": [
+    {
+      "id_info": 10,
+      "id_disciplina": 1,
+      "data": "2025-11-20",
+      "hora": "08:00",
+      "duracao": "2h",
+      "aula_disciplina": "Funções"
+    }
+  ],
+  "historico": [
+    {
+      "id_info": 10,
+      "id_aluno": 25,
+      "nome_aluno": "João",
+      "situacao_turma": "Regular",
+      "data_de_situacao_da_turma": "2025-01-01",
+      "situacao_disciplina": "Cursando",
+      "percentual_frequencia_na_disciplina": 90,
+      "percentual_frequencia_no_curso": 88,
+      "media_de_frequencia_na_disciplina": 85,
+      "media_final": 92,
+      "numero_de_faltas_na_disciplina": 3,
+      "data_hora_turno": "2025-11-20 08:00 Manhã"
+    },
+    {
+      "id_info": 1,
+      "id_aluno": 2,
+      "nome_aluno": "João R",
+      "situacao_turma": "Regular",
+      "data_de_situacao_da_turma": "2025-01-01",
+      "situacao_disciplina": "Cursando",
+      "percentual_frequencia_na_disciplina": 90,
+      "percentual_frequencia_no_curso": 88,
+      "media_de_frequencia_na_disciplina": 85,
+      "media_final": 92,
+      "numero_de_faltas_na_disciplina": 3,
+      "data_hora_turno": "2025-11-20 08:00 Manhã"
+    }]
+}
