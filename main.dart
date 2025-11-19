@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'dart:convert';
 // Map<String, dynamic> disciplinas = {
 //   "id_disciplina": {"nome_disciplina"}
 // };
@@ -19,6 +19,19 @@ Map<String, String> disciplinas = {
   "UC11": "Realizar operações de suporte junto ao usuário",
   "UC12": "Projeto Integrador - Desenvolvedor de Aplicações",
 };
+int menu_disciplinas(disciplinas) {
+  disciplinas.forEach((id_disciplina, nome_disciplina) => stdout.write("ID: $id_disciplina Nome: $nome_disciplina\n"));
+  stdout.write("Digite o id da disciplina: ");
+
+  String? inpO = stdin.readLineSync();
+  int? opcao = (inpO != null && inpO.isNotEmpty) ? int.tryParse(inpO) : null;
+  print("=" * 70);
+  if (opcao != null && !opcao.isNaN) {
+    return opcao;
+  } else {
+    return 9999;
+  }
+}
 
 // Map<int, dynamic> infoDisciplina = {
 //   0: {
@@ -31,7 +44,7 @@ Map<String, String> disciplinas = {
 // };
 
 // Map<String, dynamic> historico = {
-//   "id_info": id_info,
+//   "id_info": id_info {
 //   "id_aluno": id_aluno,
 //   "nome_aluno": nome_aluno,
 //   "situacao_turma": situacao_turma,
@@ -42,11 +55,18 @@ Map<String, String> disciplinas = {
 //   "media_de_frequencia_na_disciplina": media_de_frequencia_na_disciplina,
 //   "media_final": media_final,
 //   "numero_de_faltas_na_disciplina": numero_de_faltas_na_disciplina,
-//   "data_hora_turno": data_hora_turno,
+//   "data_hora_turno": data_hora_turno
+//  }
 // };
 
-Map<String, dynamic> historico = {};
+Future<void> inicializarArquivo() async {
+  final file = File("armazenamento.json");
+  if (!await file.exists()) {
+    await file.writeAsString(jsonEncode([]));
+  }
+}
 
-void adicionarHistorico(historico) {}
-
-void main() {}
+// Future<list<Map, String>>> dados = {}
+void main () {
+  inicializarArquivo();
+}
