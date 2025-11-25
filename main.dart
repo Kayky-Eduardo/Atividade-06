@@ -11,14 +11,19 @@ Map<String, dynamic> disciplinas = {
     "quantidade": 30,
   },
   "3": {"materia": "Desenvolver algoritmos", "quantidade": 20},
+
   "4": {
     "materia": "Analisar programação estruturada e orientada a objetos",
     "quantidade": 50,
   },
   "5": {"materia": "Desenvolver aplicações desktop", "quantidade": 20},
-  "6": {"materia": "Criar e manter Banco de Dados", "quantidade": 20},
+
+  "6": {"materia": "Criar e manter Banco de Dados", "quantidade": 25},
+
   "7": {"materia": "Desenvolver aplicações web", "quantidade": 20},
+
   "8": {"materia": "Desenvolver aplicações mobile", "quantidade": 20},
+
   "9": {
     "materia":
         "Realizar operações de atualização e manutenção em aplicações desenvolvidas",
@@ -66,8 +71,13 @@ void exibicaoInfoDisciplina(File file, String id_disciplina) {
   var qntd = disciplinas[id_disciplina]['quantidade'];
 
   try {
-    historico.forEach((registro) {
-      if (registro is Map && registro['id_disciplina'].toString() == id_disciplina) {
+    bool flag = false;
+    for (var registro in historico) {
+      if (registro is Map &&
+          registro['id_disciplina'].toString() == id_disciplina &&
+          registro.isNotEmpty) {
+          flag = true;
+
         registro.forEach((chave, valor) {
           if (chave == 'aula_disciplina') {
             print('$chave : $valor/$qntd');
@@ -75,11 +85,11 @@ void exibicaoInfoDisciplina(File file, String id_disciplina) {
             print('$chave : $valor');
           }
         });
-      } else {
-        // print(registro);
       }
-      print("\n");
-    });
+    }
+    if (!flag) {
+      print('Nenhum registro encontrado para a disciplina $id_disciplina');
+    }
     // List<dynamic> listaDeItens = entry.value;
   } catch (e) {
     print('Ocorreu um erro ao decodificar: $e');

@@ -1,6 +1,6 @@
 {
   "registros_ponto": [
-    {
+{
       "id_info": 1,
       "id_disciplina": 1,
       "data": "2025-11-20",
@@ -14,7 +14,39 @@
       "data": "2025-11-20",
       "hora": "10:00",
       "duracao": "2h",
-      "aula_disciplina": 2
+      "aula_disciplina": 1
+    },
+    {
+      "id_info": 3,
+      "id_disciplina": 7,
+      "data": "2025-11-21",
+      "hora": "08:00",
+      "duracao": "2h",
+      "aula_disciplina": 1
+    },
+    {
+      "id_info": 4,
+      "id_disciplina": 6,
+      "data": "2025-11-21",
+      "hora": "10:00",
+      "duracao": "2h",
+      "aula_disciplina": 1
+    },
+    {
+      "id_info": 5,
+      "id_disciplina": 10,
+      "data": "2025-11-22",
+      "hora": "08:00",
+      "duracao": "2h",
+      "aula_disciplina": 1
+    },
+    {
+      "id_info": 6,
+      "id_disciplina": 12,
+      "data": "2025-11-22",
+      "hora": "10:00",
+      "duracao": "2h",
+      "aula_disciplina": 1
     }
   ],
   "historico": [
@@ -45,5 +77,48 @@
       "media_final": 92,
       "numero_de_faltas_na_disciplina": 3,
       "data_hora_turno": "2025-11-20 08:00 Manhã"
-    }]
+    },
+    {
+      "id_info": 3,
+      "id_aluno": 18,
+      "nome_aluno": "Maria Silva",
+      "situacao_turma": "Regular",
+      "data_de_situacao_da_turma": "2025-01-10",
+      "situacao_disciplina": "Cursando",
+      "percentual_frequencia_na_disciplina": 95,
+      "percentual_frequencia_no_curso": 90,
+      "media_de_frequencia_na_disciplina": 92,
+      "media_final": 94,
+      "numero_de_faltas_na_disciplina": 1,
+      "data_hora_turno": "2025-11-21 08:00 Manhã"
+    },
+    {
+      "id_info": 4,
+      "id_aluno": 33,
+      "nome_aluno": "Carlos Souza",
+      "situacao_turma": "Regular",
+      "data_de_situacao_da_turma": "2025-02-01",
+      "situacao_disciplina": "Cursando",
+      "percentual_frequencia_na_disciplina": 80,
+      "percentual_frequencia_no_curso": 82,
+      "media_de_frequencia_na_disciplina": 78,
+      "media_final": 85,
+      "numero_de_faltas_na_disciplina": 4,
+      "data_hora_turno": "2025-11-21 10:00 Manhã"
+    },
+    {
+      "id_info": 5,
+      "id_aluno": 40,
+      "nome_aluno": "Ana Pires",
+      "situacao_turma": "Regular",
+      "data_de_situacao_da_turma": "2025-03-05",
+      "situacao_disciplina": "Cursando",
+      "percentual_frequencia_na_disciplina": 92,
+      "percentual_frequencia_no_curso": 89,
+      "media_de_frequencia_na_disciplina": 90,
+      "media_final": 91,
+      "numero_de_faltas_na_disciplina": 2,
+      "data_hora_turno": "2025-11-22 08:00 Manhã"
+    }
+  ]
 }
