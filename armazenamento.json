@@ -6,15 +6,15 @@
       "data": "2025-11-20",
       "hora": "08:00",
       "duracao": "2h",
-      "aula_disciplina": ""
+      "aula_disciplina": 1
     },
     {
       "id_info": 2,
-      "id_disciplina": 1,
+      "id_disciplina": 4,
       "data": "2025-11-20",
       "hora": "10:00",
       "duracao": "2h",
-      "aula_disciplina": ""
+      "aula_disciplina": 2
     }
   ],
   "historico": [
