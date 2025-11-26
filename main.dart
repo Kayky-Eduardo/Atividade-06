@@ -59,68 +59,108 @@ int menu_disciplinas(disciplinas) {
   }
 }
 
-void exibicaoInfoDisciplina(File file, String id_disciplina) {
-  final conteudo = file.readAsStringSync();
-  final mapaDecodificado = json.decode(conteudo);
-  final List<dynamic> historico = mapaDecodificado['registros_ponto'];
-  var qntd = disciplinas[id_disciplina]['quantidade'];
+Future<void> exibicaoInfoDisciplina(File file, String id_disciplina) async {
+  if (!disciplinas.containsKey(id_disciplina)) {
+    print("Disciplina não encontrada!");
+    return;
+  }
 
-  try {
-    historico.forEach((registro) {
-      if (registro is Map && registro['id_disciplina'].toString() == id_disciplina) {
-        registro.forEach((chave, valor) {
-          if (chave == 'aula_disciplina') {
-            print('$chave : $valor/$qntd');
-          } else {
-            print('$chave : $valor');
-          }
-        });
+  bool continuar = true;
+  
+  while (continuar) {
+    // Recarregar o arquivo a cada iteração
+    final conteudo = file.readAsStringSync();
+    final mapaDecodificado = json.decode(conteudo);
+    final List<dynamic> historico = mapaDecodificado['registros_ponto'];
+    var qntd = disciplinas[id_disciplina]['quantidade'];
+
+    var registrosDisciplina = historico.where((registro) =>
+        registro['id_disciplina'].toString() == id_disciplina).toList();
+
+    print("\n" + "=" * 70);
+    print("REGISTROS DA DISCIPLINA: ${disciplinas[id_disciplina]['materia']}");
+    print("=" * 70);
+
+    if (registrosDisciplina.isEmpty) {
+      print("0 Registros encontrados para esta disciplina");
+    } else {
+      for (var registro in registrosDisciplina) {
+        print("ID Info: ${registro['id_info']}");
+        print("Aula: ${registro['aula_disciplina']}/$qntd");
+        print("Data: ${registro['data']}");
+        print("Hora: ${registro['hora']}");
+        print("Duração: ${registro['duracao']}");
+        
+        // Mostrar presenças se existirem
+        if (registro.containsKey('presencas')) {
+          List<dynamic> presencas = registro['presencas'];
+          int presentes = presencas.where((p) => p['presente']).length;
+          print("Presentes: $presentes/${presencas.length}");
+        }
+        
+        print("-" * 70);
       }
-      stdout.write("Deseja adicionar um novo ponto nesta disciplina?(s/n): ");
-      String? inptEscolha = stdin.readLineSync();
-      String? escolha = (inptEscolha != null && inptEscolha.isNotEmpty) ?
-      inptEscolha.trim().toLowerCase() : null;
-      if (escolha != null) {
-        DateTime datetime = DateTime.now();
-        String data = "${datetime.day}/${datetime.month}/${datetime.year}";
-        String hora = "${datetime.hour.toString()}";
+      int aulaAtual = registrosDisciplina.length;
+      print("\nTotal de aulas registradas: $aulaAtual/$qntd");
+    }
+    
+    print("=" * 70);
+    stdout.write("Deseja adicionar um novo ponto nesta disciplina?(s/n): ");
+    String? inptEscolha = stdin.readLineSync();
+    String? escolha = (inptEscolha != null && inptEscolha.isNotEmpty)
+        ? inptEscolha.trim().toLowerCase()
+        : null;
 
-        stdout.write("Duração(formato h:m)): ");
-        String? inptDuracao = stdin.readLineSync();
-        String? duracao = (inptDuracao != null && inptDuracao.isNotEmpty) ?
-        inptDuracao.trim().toLowerCase() : "01:00";
+    if (escolha == 's') {
+      DateTime datetime = DateTime.now();
+      String data = "${datetime.day.toString().padLeft(2, '0')}/"
+          "${datetime.month.toString().padLeft(2, '0')}/"
+          "${datetime.year}";
+      String hora = "${datetime.hour.toString().padLeft(2, '0')}:"
+          "${datetime.minute.toString().padLeft(2, '0')}";
 
-        // pegar o id info do ultimo e somar mais um
-        adicionar_info(id_info, id_disciplina, data, hora, duracao);
-      }
-    });
-  } catch (e) {
-    print('Ocorreu um erro ao decodificar: $e');
+      stdout.write("Duração (formato hh:mm): ");
+      String? inptDuracao = stdin.readLineSync();
+      String? duracao = (inptDuracao != null && inptDuracao.isNotEmpty)
+          ? inptDuracao.trim()
+          : "01:00";
+
+      int proximoId = historico.isEmpty
+          ? 1
+          : historico.map((r) => r['id_info'] as int).reduce((a, b) => a > b ? a : b) + 1;
+
+      int proximaAula = registrosDisciplina.length + 1;
+      
+      await adicionarInfo(file, proximoId, id_disciplina, data, hora, duracao, proximaAula);
+
+      print("\n✅ Ponto adicionado com sucesso!");
+      print("Atualizando lista...\n");
+      
+      // O loop continua e recarrega os dados automaticamente
+    } else {
+      continuar = false; // Sair do loop
+    }
   }
 }
 
-Future<void> adicionar_info(id_info, id_disciplina, data, hora, duracao, [aula_disciplina]) async {
-  final file = File("armazenamento.json");
+Future<void> adicionarInfo(file, id_info, id_disciplina, data, hora, duracao, aula_disciplina) async {
   String conteudo = await file.readAsString();
   // final mapaDecodificado = jsonDecode(conteudo);
   Map<String, dynamic> resposta_json = jsonDecode(conteudo);
-  resposta_json['id_info'] = id_info;
-  resposta_json['id_disciplina'] = id_disciplina;
-  resposta_json['data'] = data;
-  resposta_json['hora'] = hora;
-  resposta_json['duracao'] = duracao;
-  resposta_json['aula_disciplina'] = aula_disciplina ?? '-';
+  Map<String, dynamic> novoRegistro = {
+    "id_info": id_info,
+    "id_disciplina": id_disciplina,
+    "data": data,
+    "hora": hora,
+    "duracao": duracao,
+    "aula_disciplina": aula_disciplina
+  };
 
-  // List<dynamic>registro_pontos = mapaDecodificado['registros_ponto'][{
-  //   "id_info": id_info,
-  //   "id_disciplina": id_disciplina,
-  //   "data": data,
-  //   "hora": hora,
-  //   "duracao": duracao,
-  //   "aula_disciplina": aula_disciplina
-  // }];
-  String JSON_atualizado = jsonEncode(resposta_json);
-  await file.writeAsString(JSON_atualizado);
+  List<dynamic> registrosPonto = resposta_json['registros_ponto'];
+  registrosPonto.add(novoRegistro);
+
+  String jsonAtualizado = JsonEncoder.withIndent('  ').convert(resposta_json);
+  await file.writeAsString(jsonAtualizado);
 }
 
 void mostrarHistorico(File file) {
@@ -148,19 +188,59 @@ void mostrarHistorico(File file) {
 Future<void> inicializarArquivo() async {
   final file = File("armazenamento.json");
   if (!await file.exists()) {
-    await file.writeAsString(jsonEncode([]));
+    Map<String, dynamic> estruturaInicial = {
+      "registros_ponto": [],
+      "historico": []
+    };
+    await file.writeAsString(
+      JsonEncoder.withIndent('  ').convert(estruturaInicial)
+    );
+    print("Arquivo json criado!");
   } else {
     return;
   }
 }
 
-void relatorioHistorico() async {}
-
+int menuPrincipal() {
+  print("\n" + "=" * 70);
+  print("1 - Lançar frequência (Registrar presença de alunos)");
+  print("2 - Ver registros de ponto de uma disciplina");
+  print("3 - Ver histórico de alunos");
+  print("4 - Sair");
+  print("=" * 70);
+  
+  stdout.write("Escolha uma opção: ");
+  String? input = stdin.readLineSync();
+  int? opcao = (input != null && input.isNotEmpty) ? int.tryParse(input) : null;
+  
+  return opcao ?? 999;
+}
 // Future<list<Map, String>>> dados = {}
-void main() {
-  int opcao = menu_disciplinas(disciplinas);
+Future<void> main() async {
+  await inicializarArquivo();
   final file = File("armazenamento.json");
-  exibicaoInfoDisciplina(file, opcao.toString());
-  inicializarArquivo();
-  // mostrarHistorico(file);
+  
+  while (true) {
+    int opcao = menuPrincipal();
+    
+    switch (opcao) {
+      case 1:
+        // await lancarFrequencia(file);
+        break;
+      case 2:
+        int disciplinaId = menu_disciplinas(disciplinas);
+        if (disciplinaId != 9999) {
+          await exibicaoInfoDisciplina(file, disciplinaId.toString());
+        }
+        break;
+      case 3:
+        mostrarHistorico(file);
+        break;
+      case 4:
+        print("\nEncerrando sistema...");
+        return;
+      default:
+        print("Opção inválida!");
+    }
+  }
 }
