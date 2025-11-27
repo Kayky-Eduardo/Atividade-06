@@ -68,7 +68,6 @@ Future<void> exibicaoInfoDisciplina(File file, String id_disciplina) async {
   bool continuar = true;
   
   while (continuar) {
-    // Recarregar o arquivo a cada iteração
     final conteudo = file.readAsStringSync();
     final mapaDecodificado = json.decode(conteudo);
     final List<dynamic> historico = mapaDecodificado['registros_ponto'];
@@ -91,7 +90,6 @@ Future<void> exibicaoInfoDisciplina(File file, String id_disciplina) async {
         print("Hora: ${registro['hora']}");
         print("Duração: ${registro['duracao']}");
         
-        // Mostrar presenças se existirem
         if (registro.containsKey('presencas')) {
           List<dynamic> presencas = registro['presencas'];
           int presentes = presencas.where((p) => p['presente']).length;
@@ -107,45 +105,36 @@ Future<void> exibicaoInfoDisciplina(File file, String id_disciplina) async {
     print("=" * 70);
     stdout.write("Deseja adicionar um novo ponto nesta disciplina?(s/n): ");
     String? inptEscolha = stdin.readLineSync();
-    String? escolha = (inptEscolha != null && inptEscolha.isNotEmpty)
-        ? inptEscolha.trim().toLowerCase()
-        : null;
+    String? escolha = (inptEscolha != null && inptEscolha.isNotEmpty)?
+    inptEscolha.trim().toLowerCase() : null;
 
     if (escolha == 's') {
       DateTime datetime = DateTime.now();
-      String data = "${datetime.day.toString().padLeft(2, '0')}/"
-          "${datetime.month.toString().padLeft(2, '0')}/"
-          "${datetime.year}";
-      String hora = "${datetime.hour.toString().padLeft(2, '0')}:"
-          "${datetime.minute.toString().padLeft(2, '0')}";
+      String data = "${datetime.day}/${datetime.month}/${datetime.year}";
+      String hora = "${datetime.hour.toString()}";
 
       stdout.write("Duração (formato hh:mm): ");
       String? inptDuracao = stdin.readLineSync();
-      String? duracao = (inptDuracao != null && inptDuracao.isNotEmpty)
-          ? inptDuracao.trim()
-          : "01:00";
 
-      int proximoId = historico.isEmpty
-          ? 1
-          : historico.map((r) => r['id_info'] as int).reduce((a, b) => a > b ? a : b) + 1;
+      String? duracao = (inptDuracao != null && inptDuracao.isNotEmpty)?
+      inptDuracao.trim() : "01:00";
+
+      int proximoId = historico.isEmpty?
+      1 : historico.map((r) => r['id_info'] as int).reduce((a, b) => a > b ? a : b) + 1;
 
       int proximaAula = registrosDisciplina.length + 1;
       
       await adicionarInfo(file, proximoId, id_disciplina, data, hora, duracao, proximaAula);
 
-      print("\n✅ Ponto adicionado com sucesso!");
-      print("Atualizando lista...\n");
-      
-      // O loop continua e recarrega os dados automaticamente
+      print("\nPonto adicionado!");      
     } else {
-      continuar = false; // Sair do loop
+      continuar = false;
     }
   }
 }
 
 Future<void> adicionarInfo(file, id_info, id_disciplina, data, hora, duracao, aula_disciplina) async {
   String conteudo = await file.readAsString();
-  // final mapaDecodificado = jsonDecode(conteudo);
   Map<String, dynamic> resposta_json = jsonDecode(conteudo);
   Map<String, dynamic> novoRegistro = {
     "id_info": id_info,

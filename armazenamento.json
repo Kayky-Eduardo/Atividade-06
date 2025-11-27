@@ -111,6 +111,14 @@
       "hora": "20:38",
       "duracao": "02:00",
       "aula_disciplina": 9
+    },
+    {
+      "id_info": 15,
+      "id_disciplina": "1",
+      "data": "26/11/2025",
+      "hora": "20",
+      "duracao": "01:00",
+      "aula_disciplina": 10
     }
   ],
   "historico": [
