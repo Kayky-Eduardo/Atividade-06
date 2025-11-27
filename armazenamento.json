@@ -1,196 +1,268 @@
 {
-  "registros_ponto": [
-    {
-      "id_info": 1,
-      "id_disciplina": 1,
-      "data": "2025-11-20",
-      "hora": "08:00",
-      "duracao": "2h",
-      "aula_disciplina": 1
-    },
-    {
-      "id_info": 2,
-      "id_disciplina": 4,
-      "data": "2025-11-20",
-      "hora": "10:00",
-      "duracao": "2h",
-      "aula_disciplina": 1
-    },
-    {
-      "id_info": 3,
-      "id_disciplina": 7,
-      "data": "2025-11-21",
-      "hora": "08:00",
-      "duracao": "2h",
-      "aula_disciplina": 1
-    },
-    {
-      "id_info": 4,
-      "id_disciplina": 6,
-      "data": "2025-11-21",
-      "hora": "10:00",
-      "duracao": "2h",
-      "aula_disciplina": 1
-    },
-    {
-      "id_info": 5,
-      "id_disciplina": 2,
-      "data": "2025-11-22",
-      "hora": "08:00",
-      "duracao": "2h",
-      "aula_disciplina": 1
-    },
-    {
-      "id_info": 6,
-      "id_disciplina": 3,
-      "data": "2025-11-22",
-      "hora": "10:00",
-      "duracao": "2h",
-      "aula_disciplina": 1
-    },
-    {
-      "id_info": 7,
-      "id_disciplina": "1",
-      "data": "26/11/2025",
-      "hora": "13:00",
-      "duracao": "2h",
-      "aula_disciplina": 2
-    },
-    {
-      "id_info": 8,
-      "id_disciplina": "1",
-      "data": "26/11/2025",
-      "hora": "20",
-      "duracao": "02:00",
-      "aula_disciplina": 3
-    },
-    {
-      "id_info": 9,
-      "id_disciplina": "1",
-      "data": "26/11/2025",
-      "hora": "20",
-      "duracao": "03:00",
-      "aula_disciplina": 4
-    },
-    {
-      "id_info": 10,
-      "id_disciplina": "1",
-      "data": "26/11/2025",
-      "hora": "20",
-      "duracao": "01:00",
-      "aula_disciplina": 5
-    },
-    {
-      "id_info": 11,
-      "id_disciplina": "1",
-      "data": "26/11/2025",
-      "hora": "20",
-      "duracao": "04:00",
-      "aula_disciplina": 6
-    },
-    {
-      "id_info": 12,
-      "id_disciplina": "1",
-      "data": "26/11/2025",
-      "hora": "20",
-      "duracao": "06:00",
-      "aula_disciplina": 7
-    },
-    {
-      "id_info": 13,
-      "id_disciplina": "1",
-      "data": "26/11/2025",
-      "hora": "20:38",
-      "duracao": "01:00",
-      "aula_disciplina": 8
-    },
-    {
-      "id_info": 14,
-      "id_disciplina": "1",
-      "data": "26/11/2025",
-      "hora": "20:38",
-      "duracao": "02:00",
-      "aula_disciplina": 9
-    },
-    {
-      "id_info": 15,
-      "id_disciplina": "1",
-      "data": "26/11/2025",
-      "hora": "20",
-      "duracao": "01:00",
-      "aula_disciplina": 10
-    }
-  ],
-  "historico": [
-    {
-      "id_info": 1,
-      "id_aluno": 25,
-      "nome_aluno": "João",
-      "situacao_turma": "Regular",
-      "data_de_situacao_da_turma": "2025-01-01",
-      "situacao_disciplina": "Cursando",
-      "percentual_frequencia_na_disciplina": 90,
-      "percentual_frequencia_no_curso": 88,
-      "media_de_frequencia_na_disciplina": 85,
-      "media_final": 92,
-      "numero_de_faltas_na_disciplina": 3,
-      "data_hora_turno": "2025-11-20 08:00 Manhã"
-    },
-    {
-      "id_info": 2,
-      "id_aluno": 2,
-      "nome_aluno": "João R",
-      "situacao_turma": "Regular",
-      "data_de_situacao_da_turma": "2025-01-01",
-      "situacao_disciplina": "Cursando",
-      "percentual_frequencia_na_disciplina": 90,
-      "percentual_frequencia_no_curso": 88,
-      "media_de_frequencia_na_disciplina": 85,
-      "media_final": 92,
-      "numero_de_faltas_na_disciplina": 3,
-      "data_hora_turno": "2025-11-20 08:00 Manhã"
-    },
-    {
-      "id_info": 3,
-      "id_aluno": 18,
-      "nome_aluno": "Maria Silva",
-      "situacao_turma": "Regular",
-      "data_de_situacao_da_turma": "2025-01-10",
-      "situacao_disciplina": "Cursando",
-      "percentual_frequencia_na_disciplina": 95,
-      "percentual_frequencia_no_curso": 90,
-      "media_de_frequencia_na_disciplina": 92,
-      "media_final": 94,
-      "numero_de_faltas_na_disciplina": 1,
-      "data_hora_turno": "2025-11-21 08:00 Manhã"
-    },
-    {
-      "id_info": 4,
-      "id_aluno": 33,
-      "nome_aluno": "Carlos Souza",
-      "situacao_turma": "Regular",
-      "data_de_situacao_da_turma": "2025-02-01",
-      "situacao_disciplina": "Cursando",
-      "percentual_frequencia_na_disciplina": 80,
-      "percentual_frequencia_no_curso": 82,
-      "media_de_frequencia_na_disciplina": 78,
-      "media_final": 85,
-      "numero_de_faltas_na_disciplina": 4,
-      "data_hora_turno": "2025-11-21 10:00 Manhã"
-    },
-    {
-      "id_info": 5,
-      "id_aluno": 40,
-      "nome_aluno": "Ana Pires",
-      "situacao_turma": "Regular",
-      "data_de_situacao_da_turma": "2025-03-05",
-      "situacao_disciplina": "Cursando",
-      "percentual_frequencia_na_disciplina": 92,
-      "percentual_frequencia_no_curso": 89,
-      "media_de_frequencia_na_disciplina": 90,
-      "media_final": 91,
-      "numero_de_faltas_na_disciplina": 2,
-      "data_hora_turno": "2025-11-22 08:00 Manhã"
-    }
-  ]
+    "registros_ponto": 
+    [
+        {
+            "id_info": 1,
+            "id_disciplina": 1,
+            "data": "2025-11-20",
+            "hora": "08:00",
+            "duracao": "2h",
+            "aula_disciplina": 1
+        },
+        {
+            "id_info": 2,
+            "id_disciplina": 4,
+            "data": "2025-11-20",
+            "hora": "10:00",
+            "duracao": "2h",
+            "aula_disciplina": 1
+        },
+        {
+            "id_info": 3,
+            "id_disciplina": 7,
+            "data": "2025-11-21",
+            "hora": "08:00",
+            "duracao": "2h",
+            "aula_disciplina": 1
+        },
+        {
+            "id_info": 4,
+            "id_disciplina": 6,
+            "data": "2025-11-21",
+            "hora": "10:00",
+            "duracao": "2h",
+            "aula_disciplina": 1
+        },
+        {
+            "id_info": 5,
+            "id_disciplina": 2,
+            "data": "2025-11-22",
+            "hora": "08:00",
+            "duracao": "2h",
+            "aula_disciplina": 1
+        },
+        {
+            "id_info": 6,
+            "id_disciplina": 3,
+            "data": "2025-11-22",
+            "hora": "10:00",
+            "duracao": "2h",
+            "aula_disciplina": 1
+        },
+        {
+            "id_info": 7,
+            "id_disciplina": "1",
+            "data": "26/11/2025",
+            "hora": "13:00",
+            "duracao": "2h",
+            "aula_disciplina": 2
+        },
+        {
+            "id_info": 8,
+            "id_disciplina": "1",
+            "data": "26/11/2025",
+            "hora": "20",
+            "duracao": "02:00",
+            "aula_disciplina": 3
+        },
+        {
+            "id_info": 9,
+            "id_disciplina": "1",
+            "data": "26/11/2025",
+            "hora": "20",
+            "duracao": "03:00",
+            "aula_disciplina": 4
+        },
+        {
+            "id_info": 10,
+            "id_disciplina": "1",
+            "data": "26/11/2025",
+            "hora": "20",
+            "duracao": "01:00",
+            "aula_disciplina": 5
+        },
+        {
+            "id_info": 11,
+            "id_disciplina": "1",
+            "data": "26/11/2025",
+            "hora": "20",
+            "duracao": "04:00",
+            "aula_disciplina": 6
+        },
+        {
+            "id_info": 12,
+            "id_disciplina": "1",
+            "data": "26/11/2025",
+            "hora": "20",
+            "duracao": "06:00",
+            "aula_disciplina": 7
+        },
+        {
+            "id_info": 13,
+            "id_disciplina": "1",
+            "data": "26/11/2025",
+            "hora": "20:38",
+            "duracao": "01:00",
+            "aula_disciplina": 8
+        },
+        {
+            "id_info": 14,
+            "id_disciplina": "1",
+            "data": "26/11/2025",
+            "hora": "20:38",
+            "duracao": "02:00",
+            "aula_disciplina": 9
+        },
+        {
+            "id_info": 15,
+            "id_disciplina": "1",
+            "data": "26/11/2025",
+            "hora": "20",
+            "duracao": "01:00",
+            "aula_disciplina": 10
+        },
+        {
+            "id_info": 16,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "13",
+            "duracao": "02:00",
+            "aula_disciplina": 11
+        },
+        {
+            "id_info": 17,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "13",
+            "duracao": "03:00",
+            "aula_disciplina": 12
+        },
+        {
+            "id_info": 18,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "13",
+            "duracao": "04:00",
+            "aula_disciplina": 13
+        },
+        {
+            "id_info": 19,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "13",
+            "duracao": "04:00",
+            "aula_disciplina": 14
+        },
+        {
+            "id_info": 20,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "13",
+            "duracao": "03:00",
+            "aula_disciplina": 15
+        },
+        {
+            "id_info": 21,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "14",
+            "duracao": "03:00",
+            "aula_disciplina": 16
+        },
+        {
+            "id_info": 22,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "14",
+            "duracao": "04:00",
+            "aula_disciplina": 17
+        },
+        {
+            "id_info": 23,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "14",
+            "duracao": "05:00",
+            "aula_disciplina": 18
+        },
+        {
+            "id_info": 24,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "14",
+            "duracao": "03:00",
+            "aula_disciplina": 19
+        },
+        {
+            "id_info": 25,
+            "id_disciplina": "1",
+            "data": "27/11/2025",
+            "hora": "14",
+            "duracao": "03:00",
+            "aula_disciplina": 20
+        }
+    ],
+    "historico": 
+    [
+        {
+            "id_info": 1,
+            "id_aluno": 25,
+            "nome_aluno": "João",
+            "situacao_turma": "Regular",
+            "data_de_situacao_da_turma": "2025-01-01",
+            "situacao_disciplina": "Cursando",
+            "percentual_frequencia_na_disciplina": 90,
+            "percentual_frequencia_no_curso": 88,
+            "numero_de_faltas_na_disciplina": 3,
+            "data_hora_turno": "2025-11-20 08:00 Manhã"
+        },
+        {
+            "id_info": 2,
+            "id_aluno": 2,
+            "nome_aluno": "João R",
+            "situacao_turma": "Regular",
+            "data_de_situacao_da_turma": "2025-01-01",
+            "situacao_disciplina": "Cursando",
+            "percentual_frequencia_na_disciplina": 90,
+            "percentual_frequencia_no_curso": 88,
+            "numero_de_faltas_na_disciplina": 3,
+            "data_hora_turno": "2025-11-20 08:00 Manhã"
+        },
+        {
+            "id_info": 3,
+            "id_aluno": 18,
+            "nome_aluno": "Maria Silva",
+            "situacao_turma": "Regular",
+            "data_de_situacao_da_turma": "2025-01-10",
+            "situacao_disciplina": "Cursando",
+            "percentual_frequencia_na_disciplina": 95,
+            "percentual_frequencia_no_curso": 90,
+            "numero_de_faltas_na_disciplina": 1,
+            "data_hora_turno": "2025-11-21 08:00 Manhã"
+        },
+        {
+            "id_info": 4,
+            "id_aluno": 33,
+            "nome_aluno": "Carlos Souza",
+            "situacao_turma": "Regular",
+            "data_de_situacao_da_turma": "2025-02-01",
+            "situacao_disciplina": "Cursando",
+            "percentual_frequencia_na_disciplina": 80,
+            "percentual_frequencia_no_curso": 82,
+            "numero_de_faltas_na_disciplina": 4,
+            "data_hora_turno": "2025-11-21 10:00 Manhã"
+        },
+        {
+            "id_info": 5,
+            "id_aluno": 40,
+            "nome_aluno": "Ana Pires",
+            "situacao_turma": "Regular",
+            "data_de_situacao_da_turma": "2025-03-05",
+            "situacao_disciplina": "Cursando",
+            "percentual_frequencia_na_disciplina": 92,
+            "percentual_frequencia_no_curso": 89,
+            "numero_de_faltas_na_disciplina": 2,
+            "data_hora_turno": "2025-11-22 08:00 Manhã"
+        }
+    ]
 }
